@@ -1,12 +1,21 @@
+<!--
+;==========================================
+; Title: Mobile Application to view AIEE members
+; Author: Prem chand Avanigadda
+; Date: 6/13/2019
+;==========================================
+-->
 <ion-header>
   <ion-toolbar>
     <ion-title>
+      <!-- Page name -->
       AIEE Members
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- Taking Number of AIEE persons user want to see -->
   <ion-item>
     <ion-label position="floating">No of Members</ion-label>
     <ion-input
@@ -17,6 +26,8 @@
       [(ngModel)]="result"
     ></ion-input>
   </ion-item>
+
+  <!-- Taking Page number from the user -->
   <ion-item>
     <ion-label position="floating">page number</ion-label>
     <ion-input
@@ -26,11 +37,18 @@
       [(ngModel)]="page"
     ></ion-input>
   </ion-item>
-  <ion-button (click)="getList()" shape="round">Get List</ion-button>
+
+  <!-- Button to GET list of members from API -->
+  <ion-button (click)="getList()" shape="round"> Enter </ion-button>
+
+  <!--created a view to list the AIEE members  -->
   <ion-list>
+    <!-- for loop to iterate over array of members -->
     <ion-item *ngFor="let Member of res">
+      <!-- created card to combine IMG and details -->
       <ion-card>
         <ion-img [src]="Member.picture.large"></ion-img>
+        <!-- card header to hold person name -->
         <ion-card-header>
           <h4>
             <b>
@@ -40,6 +58,7 @@
           </h4>
         </ion-card-header>
         <ion-card-content>
+          <!-- Displays Registration date in MM/DD/YYYY formate-->
           <ion-item>
             <ion-label><b>Registration Date:</b></ion-label>
             <ion-datetime
@@ -47,6 +66,7 @@
               [value]="Member.registered.date"
             ></ion-datetime>
           </ion-item>
+          <!-- Age of Membership age-->
           <ion-item
             ><ion-label
               ><b
@@ -54,6 +74,7 @@
               ></ion-label
             ></ion-item
           >
+          <!--Address of AIEE member -->
           <ion-item
             ><ion-label>
               Address:<br />
